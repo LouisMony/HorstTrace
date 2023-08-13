@@ -1,0 +1,51 @@
+@import '../index.scss';
+
+.Nav{
+    position: fixed;
+    top: $baseUnit;
+    right: $baseUnit;
+    z-index: 1000;
+
+    ul{
+        display: flex;
+        flex-direction: row;
+        gap: calc(2 * $baseUnit);
+
+        li{
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            height: fit-content;
+            position: relative;
+            a{
+                position: relative;
+                color: $white;
+                font-size: 12px;
+                z-index: 1000;
+
+                &::before{
+                    color: transparent;
+                    content: attr(data-content);
+                    font-family: "PPEikoL"; 
+                    position: absolute;
+                    width: 100%;
+                    top: 110%;
+                    left: 0;
+                    z-index: 999;
+                    transition: all 0ms ease-in-out;
+                }
+            }
+
+            &:hover{
+                a{
+                    color: transparent;
+
+                    &::before{
+                        color: white;
+                        top: -30%;
+                        transition: all 200ms ease-in-out;
+                    }
+                } 
+            }
+            
+        }
+    }
+}

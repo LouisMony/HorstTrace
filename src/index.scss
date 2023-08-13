@@ -1,0 +1,90 @@
+//FONT
+  //EIKO
+@font-face {
+  font-family: "PPEikoL";   /*Can be any text*/
+  src: local('PPEikoL'), url("./font/PPEiko/PPEiko-LightItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "PPEikoM";   /*Can be any text*/
+  src: local('PPEikoM'), url("./font/PPEiko/PPEiko-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: "PPEikoB";   /*Can be any text*/
+  src: local('PPEikoB'), url("./font/PPEiko/PPEiko-Heavy.woff") format("woff");
+}
+
+  //NOHEMI
+@font-face {
+  font-family: "NohemiB";   /*Can be any text*/
+  src: local('NohemiB'), url("./font/Nohemi/Nohemi-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "NohemiR";   /*Can be any text*/
+  src: local('NohemiR'), url("./font/Nohemi/Nohemi-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "NohemiM";   /*Can be any text*/
+  src: local('NohemiM'), url("./font/Nohemi/Nohemi-Medium.woff") format("woff");
+}
+//VARIABLE
+$baseUnit : 32px;
+
+$white: white;
+$colorp: #222222;
+//GENERAL
+*{
+  //overflow: hidden;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "NohemiR", Helvetica, sans-serif;
+}
+
+body{
+  width: 100%;
+}
+
+p,h1,h2,h3,h3{
+  margin:0;
+  font-weight: 400;
+}
+
+.EikoFont{
+  font-family: "PPEikoM";  
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+ul{
+  list-style-type: none;
+}
+
+.spacer{
+  height: calc(6*$baseUnit);
+}
+
+//Transition Screen
+.slide-in{
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  transform-origin: bottom;
+}
+
+.slide-out{
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  transform-origin: top;
+}
