@@ -1,17 +1,24 @@
 //FONT
-  //EIKO
-@font-face {
-  font-family: "PPEikoL";   /*Can be any text*/
-  src: local('PPEikoL'), url("./font/PPEiko/PPEiko-LightItalic.woff") format("woff");
-}
-@font-face {
-  font-family: "PPEikoM";   /*Can be any text*/
-  src: local('PPEikoM'), url("./font/PPEiko/PPEiko-Medium.woff") format("woff");
-}
-@font-face {
-  font-family: "PPEikoB";   /*Can be any text*/
-  src: local('PPEikoB'), url("./font/PPEiko/PPEiko-Heavy.woff") format("woff");
-}
+
+  //PowerGrotesk
+
+  @font-face {
+    font-family: "PowerB";   /*Can be any text*/
+    src: local('PowerB'), url("./font/PowerGrotesk/PowerGroteskTrial-Bold.woff") format("woff");
+  }
+  @font-face {
+    font-family: "PowerM";   /*Can be any text*/
+    src: local('PowerM'), url("./font/PowerGrotesk/PowerGroteskTrial-Medium.woff") format("woff");
+  }
+  @font-face {
+    font-family: "PowerR";   /*Can be any text*/
+    src: local('PowerR'), url("./font/PowerGrotesk/PowerGroteskTrial-Regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "PowerL";   /*Can be any text*/
+    src: local('PowerL'), url("./font/PowerGrotesk/PowerGroteskTrial-Light.woff") format("woff");
+  }
+
 
   //NOHEMI
 @font-face {
@@ -50,7 +57,7 @@ p,h1,h2,h3,h3{
 }
 
 .EikoFont{
-  font-family: "PPEikoM";  
+  font-family: "PowerM";  
 }
 
 a{
@@ -64,6 +71,8 @@ ul{
 
 .spacer{
   height: calc(6*$baseUnit);
+
+  background-color: $white;
 }
 
 //Transition Screen

@@ -1,11 +1,12 @@
 import React from "react";
 import '../style/Home.scss';
 import transition from "../transition";
+import Component__Footer from "../components/Component__Footer";
 import MusherItem from "../components/MusherItem";
 import { gsap } from "gsap";
-import SplitType from "split-type";
+import Marquee from "react-fast-marquee";
 
-
+//import SplitType from "split-type";
 
 class Home extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Home extends React.Component {
   }
 
   HandleBlocMovement(){
-      gsap.set(".Home__C__profil", {xPercent: 100, yPercent: -50});
+      gsap.set(".Home__C__profil", {xPercent: 100, yPercent: -100});
       const bloc = document.querySelector('.Home__C__profil');
   
       let xTo = gsap.quickTo(".Home__C__profil", "x", {duration: 0.4, ease: "power3"}), yTo = gsap.quickTo(".Home__C__profil", "y", {duration: 0.4, ease: "power3"});
@@ -44,7 +45,6 @@ class Home extends React.Component {
   handleMouseEnter = (param, e) => {
     
     const bloc = document.querySelector('.Home__C__profil');
-    console.log(bloc);
     
     const NewImage = document.createElement("img");
     NewImage.src = '/media/meute/' + param;
@@ -70,9 +70,12 @@ class Home extends React.Component {
     return (
       <div className='Home'>
         
-        <video autoPlay muted loop >
-          <source src="/media/video/home_video.mp4"  type="video/mp4" />
-        </video>
+        <div className="videobg">
+          <video autoPlay muted loop >
+            <source src="/media/video/home_video.mp4"  type="video/mp4" />
+          </video>
+        </div>
+        
         
         <div className="Home__A">
           <h1 className="EikoFont" id="js_title">Horstrace</h1>
@@ -147,7 +150,55 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <div className="spacer"></div>
+
+
+        <div className="Home__D">
+
+          <Marquee >
+              <div className="Home__D__container">
+                <div data-name="Mana" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/a.jpeg"/>
+                </div>
+                <div data-name="Vroum" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/c.jpeg"/>
+                </div>
+                <div data-name="Socrate" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/d.jpeg"/>
+                </div>
+                <div data-name="Jaba" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/e.jpeg"/>
+                </div>
+                <div data-name="Mekong" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/b.jpeg"/>
+                </div>
+                <div data-name="Cliff" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/f.jpeg"/>
+                </div>
+                <div data-name="Mana" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/a.jpeg"/>
+                </div>
+                <div data-name="Vroum" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/c.jpeg"/>
+                </div>
+                <div data-name="Socrate" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/d.jpeg"/>
+                </div>
+                <div data-name="Jaba" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/e.jpeg"/>
+                </div>
+                <div data-name="Mekong" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/b.jpeg"/>
+                </div>
+                <div data-name="Cliff" className="Home__D__container__item">
+                  <img  alt="Chien" src="/media/chiens/f.jpeg"/>
+                </div>
+                
+              </div>
+          </Marquee>
+        </div>
+
+
+        <Component__Footer/>
       </div>
     );
   }

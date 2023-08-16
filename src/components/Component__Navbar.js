@@ -1,31 +1,64 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
 import '../style/Nav.scss';
 
 export default class Component__Navbar extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {}
+      this.state = {
+        isMenuActive: false
+      };
+      this.navMenuRef = React.createRef(); // Référence à la div .Nav
     }
 
+    componentDidMount() {
+      // Définir l'animation initiale ici
+    }
+
+    initAnimation() {
+      console.log('start');
+      gsap.fromTo('.test',{yPercent: 100, rotateY: -45}, {yPercent:0, rotateY:0,duration: 0.6, delay:0.3, stagger: 0.1, ease: "power3.inOut"})
+    }
+
+    toggleMenu = () => {
+      this.setState((prevState) => ({
+        isMenuActive: !prevState.isMenuActive,
+      }));
+      if(this.state.isMenuActive === false){this.initAnimation()}
+    };
+
     render() {
-      return(
-        <div className='Nav'>
-          <ul>
-            <li>
-              <Link className='Link' data-content="Home" to="/">Home</Link>
-            </li>
-            <li>
-              <Link className='Link' data-content="Activités hiver" to="/contact">Activités hiver</Link>
-            </li>
-            <li>
-              <Link className='Link' data-content="Activités été" to="/contact">Activités été</Link>
-            </li>
-            <li>
-              <Link className='Link' data-content="Réservation / Contact" to="/contact">Réservation / Contact</Link>
-            </li>
-          </ul>
-        </div>
-      ) ;
+      const { isMenuActive } = this.state;
+
+      return (
+        <>
+          <div className='NavToggle' onClick={this.toggleMenu}></div>
+          <div className={`Nav ${isMenuActive ? 'active' : ''}`} ref={this.navMenuRef}>
+            <ul>
+              <li>
+                <Link onClick={this.toggleMenu} className='Link' data-content='Home' to='/'>
+                  <p className='test'><span>01</span>Home</p>
+                </Link>
+              </li>
+              <li>
+                <Link onClick={this.toggleMenu} className='Link' data-content='Activités hiver' to='/contact'>
+                  <p className='test'><span>02</span>Activités hiver</p>
+                </Link>
+              </li>
+              <li>
+                <Link onClick={this.toggleMenu} className='Link' data-content='Activités été' to='/contact'>
+                  <p className='test'><span>03</span>Activités été</p>
+                </Link>
+              </li>
+              <li>
+                <Link onClick={this.toggleMenu} className='Link' data-content='Réservation / Contact' to='/contact'>
+                  <p className='test'><span>04</span>Contact</p>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </>
+      );
     }
   }
