@@ -42,22 +42,22 @@ export default class Component__Navbar extends React.Component {
             <ul>
               <li>
                 <Link onClick={this.toggleMenu} className='Link' data-content='Home' to='/'>
-                  <p className='test'><span>01</span>Home</p>
+                  <p className='test'><span>01</span><span className='Link__name'>Home</span></p>
                 </Link>
               </li>
               <li>
                 <Link onClick={this.toggleMenu} className='Link' data-content='Activités hiver' to='/contact'>
-                  <p className='test'><span>02</span>Activités hiver</p>
+                  <p className='test'><span>02</span><span className='Link__name'>Activités hiver</span></p>
                 </Link>
               </li>
               <li>
                 <Link onClick={this.toggleMenu} className='Link' data-content='Activités été' to='/contact'>
-                  <p className='test'><span>03</span>Activités été</p>
+                  <p className='test'><span>03</span><span className='Link__name'>Activités été</span></p>
                 </Link>
               </li>
               <li>
                 <Link onClick={this.toggleMenu} className='Link' data-content='Réservation / Contact' to='/contact'>
-                  <p className='test'><span>04</span>Contact</p>
+                  <p className='test'><span>04</span><span className='Link__name'>Contact</span></p>
                 </Link>
               </li>
             </ul>

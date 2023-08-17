@@ -37,7 +37,7 @@
 $baseUnit : 32px;
 
 $white: white;
-$colorp: #222222;
+$colorp: #333333;
 //GENERAL
 *{
   //overflow: hidden;
@@ -56,7 +56,7 @@ p,h1,h2,h3,h3{
   font-weight: 400;
 }
 
-.EikoFont{
+.EikoFont, .charTitle{
   font-family: "PowerM";  
 }
 
@@ -71,8 +71,11 @@ ul{
 
 .spacer{
   height: calc(6*$baseUnit);
-
   background-color: $white;
+}
+
+.BasicText{
+  font-size: $baseUnit;
 }
 
 //Transition Screen
@@ -83,7 +86,7 @@ ul{
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: black;
+  background-color: rgb(115, 115, 115);
   transform-origin: bottom;
 }
 
@@ -94,6 +97,6 @@ ul{
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: black;
+  background-color: rgb(115, 115, 115);
   transform-origin: top;
 }

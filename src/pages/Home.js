@@ -3,24 +3,47 @@ import '../style/Home.scss';
 import transition from "../transition";
 import Component__Footer from "../components/Component__Footer";
 import MusherItem from "../components/MusherItem";
-import { gsap } from "gsap";
+
 import Marquee from "react-fast-marquee";
 
-//import SplitType from "split-type";
+//ANIMATION
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from "split-type";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       ProfilIsHovered:false,
-      currentImgSrc: "1.png", // Ajoutez l'état pour la source d'image actuelle
+      currentImgSrc: "1.png",
     }
     
   }
   
   componentDidMount(){
-      //this.InitAnimation()
+      this.InitAnimation()
       this.HandleBlocMovement()
+  }
+
+  InitAnimation(){
+    
+    //ANIMATION BLOC A
+    const MyTitle = new SplitType('#js_title', { charClass: 'charTitle' })
+    gsap.fromTo('.charTitle',{yPercent: 100}, {yPercent:0,duration: 2,stagger: 0.03, delay:.3, ease: "power4.inOut"})
+    gsap.fromTo('#js_subtitle',{yPercent: 90, opacity:0}, {yPercent:0, opacity:1,delay:1.8,duration: .5, ease: "power1.out"})
+    gsap.fromTo('.reveal_opacity',{opacity: 0}, {opacity:1,duration: 1, delay:2, stagger:.3, ease: "power4.inOut"})
+
+    //ANIMATION BLOC MUSHER
+    gsap.registerPlugin(ScrollTrigger)
+    gsap.to(".Home__C__banner",{
+      scrollTrigger:{
+          trigger: '.Home__C__banner',
+          start: 'top bottom',
+          scrub: 1,
+      },
+      backgroundPositionY: "-600px",
+    })
   }
 
   HandleBlocMovement(){
@@ -43,17 +66,12 @@ class Home extends React.Component {
   }
 
   handleMouseEnter = (param, e) => {
-    
     const bloc = document.querySelector('.Home__C__profil');
-    
     const NewImage = document.createElement("img");
     NewImage.src = '/media/meute/' + param;
     NewImage.classList.add('inactive');
-    
     bloc.appendChild(NewImage);
-
     setTimeout(function() { NewImage.classList.remove('inactive'); }, 10);
-
     NewImage.addEventListener('transitionend', () => {
       const FirstImage = bloc.querySelector("img");
       if(FirstImage){bloc.removeChild(FirstImage);}
@@ -69,7 +87,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className='Home'>
-        
+  
         <div className="videobg">
           <video autoPlay muted loop >
             <source src="/media/video/home_video.mp4"  type="video/mp4" />
@@ -78,9 +96,14 @@ class Home extends React.Component {
         
         
         <div className="Home__A">
-          <h1 className="EikoFont" id="js_title">Horstrace</h1>
-          <h2 className="EikoFont">Bienvenue dans l’aventure.</h2>
-          <p>
+          <div className="Home__A__Title">
+            <h1 className="EikoFont" id="js_title">Horstrace</h1>
+          </div>
+          <div className="Home__A__SubTitle">
+            <h2 className="EikoFont" id="js_subtitle">Bienvenue dans l’aventure.</h2>
+          </div>
+          
+          <p className="reveal_opacity">
             <span>Besoin de renouer avec la nature?<br/></span>
             <span>De ressentir des émotions authentiques?<br/></span>
             <span>Envie de découvrir une montagne sauvage...<br/></span>
@@ -89,11 +112,11 @@ class Home extends React.Component {
             <span>écoutez-les vous conter leur histoire,<br/></span>
             <span>véritable épopée au plus proche des origines de l'homme...<br/></span>
           </p>
-          <img alt="Scroll" src="/media/arrow.svg"/>
+          <img className="reveal_opacity" alt="Scroll" src="/media/arrow.svg"/>
         </div>
         
         <div className="spacer"></div>
-        <div className="Home__B">
+        {/* <div className="Home__B">
           <div className="Home__B__left">
             <h2 className="EikoFont">La meute</h2>
             <p>
@@ -116,11 +139,11 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <div className="spacer"></div>
+        <div className="spacer"></div> */}
 
         <div className="Home__C">
           <h2>Nos Mushers</h2>
-          <p className="Home__C__description">
+          <p className="Home__C__description BasicText">
             Les mushers de HORS TRACE AVENTURE ont tous pour ligne le respect de leurs animaux et leur nature profonde, par conséquent ils ajustent leur comportement et les consignes des activités en conséquence.<br/><br/>
 
             Ils veillent à la propreté des zones d'activités par souci sanitaire pour la meute mais aussi pour les clients et les autres usagers. Il arrive qu'ils s'arrêtent fréquemment sur les parcours pour ramasser les déjections.<br/><br/>

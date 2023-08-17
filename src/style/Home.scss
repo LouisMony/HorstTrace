@@ -12,28 +12,34 @@
         z-index: 100;
         padding: $baseUnit $baseUnit 0 $baseUnit;
 
-        h1{
-            
-            color: $white;
-            white-space: nowrap;
-            font-size: 19.5vw;
+        &__Title{
+            overflow: hidden;
+            h1{
+                color: $white;
+                white-space: nowrap;
+                font-size: 19.3vw;
+            }
         }
-
-        h2{
-            margin-top: calc(-1.5*$baseUnit);
-            color: $white;
-            white-space: nowrap;
-            text-align: right;
-            font-size: 32px;
-            color: rgba(255, 255, 255, 0.7);
-            font-family: "PowerM";  
+        
+        &__SubTitle{
+            //background-color: rgba(255, 0, 0, 0.327);
+            margin-top: calc(-2.5*$baseUnit);
+            overflow: hidden;
+            h2{
+                color: $white;
+                white-space: nowrap;
+                text-align: right;
+                font-size: 2.3vw;
+                color: rgba(255, 255, 255, 0.7);
+                font-family: "PowerM";  
+            }
         }
-
+        
         p{
             margin-top: calc(3*$baseUnit);
             line-height: 1.3;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.7vw;
         }
 
         img{
@@ -104,7 +110,7 @@
         padding: 0 $baseUnit;
         h2{
             white-space: nowrap;
-            font-size: calc(4*$baseUnit);
+            font-size: 10vw;
             font-family: "PowerM";  
             margin-bottom: calc(2*$baseUnit);
             text-align: right;
@@ -118,20 +124,19 @@
         &__banner{
             height: 50vh;
             width: 100%;
-            background-color: aqua;
             margin-bottom: calc(2*$baseUnit);
-            background-position: center;
+            background-position-y: -500px;
             background-repeat: no-repeat;
             background-size: cover;
             background-image: url('../assets/Banner.png');
-            //background-attachment:fixed;
         }
 
         &__profil{
             position: absolute;
             z-index: 10000;
-            width: 300px;
-            height: 300px;
+            width: 30vh;
+            min-width: 200px;
+            aspect-ratio: 1/1;
             top: 0;
             left: 0;
             background-color: black;

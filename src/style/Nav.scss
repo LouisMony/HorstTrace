@@ -16,6 +16,7 @@
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
     cursor: pointer;
+    mix-blend-mode: difference;
 
     span{
         display: block;
@@ -23,6 +24,7 @@
         height: 2px;
         width: 100%;
         background: white;
+        
         opacity: 1;
         left: 0;
         transform-origin: center;
@@ -105,7 +107,6 @@
             a{
                 position: relative;
                 color: $white;
-                font-size: calc(3*$baseUnit);
                 z-index: 900;
                 font-family: "NohemiB";
 
@@ -115,29 +116,31 @@
                     margin-right: $baseUnit;
                 }
 
-                
+                .Link__name{
+                    opacity: 1;
+                    font-size: calc(3*$baseUnit);
+                    margin-right: 0;
+                    position: relative;
 
-                &::before{
-                    content: ''; 
-                    background-color: $white;
-                    position: absolute;
-                    width: 0%;
-                    height: 1px;
-                    top: 87px;
-                    left: 0;
-                    z-index: 1000;
-                    transition: all 500ms cubic-bezier(.72,0,.23,1);
-                }
-            }
-
-            &:hover{
-                a{
                     &::before{
-                        width: 100%;
+                        content: ''; 
+                        background-color: $white;
+                        position: absolute;
+                        width: 0%;
+                        height: 2px;
+                        top: 85px;
+                        left: 0;
+                        z-index: 1000;
+                        transition: all 500ms cubic-bezier(.72,0,.23,1);
                     }
-                } 
+
+                    &:hover{
+                        &::before{
+                            width: 100%;
+                        }
+                    }
+                }  
             }
-            
         }
     }
 }
