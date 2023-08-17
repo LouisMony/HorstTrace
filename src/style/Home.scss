@@ -17,7 +17,7 @@
             h1{
                 color: $white;
                 white-space: nowrap;
-                font-size: 19.3vw;
+                font-size: 19.1vw;
             }
         }
         
@@ -125,7 +125,7 @@
             height: 50vh;
             width: 100%;
             margin-bottom: calc(2*$baseUnit);
-            background-position-y: -500px;
+            background-position-y:80%;
             background-repeat: no-repeat;
             background-size: cover;
             background-image: url('../assets/Banner.png');

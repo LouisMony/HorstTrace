@@ -30,19 +30,37 @@ class Home extends React.Component {
     
     //ANIMATION BLOC A
     const MyTitle = new SplitType('#js_title', { charClass: 'charTitle' })
-    gsap.fromTo('.charTitle',{yPercent: 100}, {yPercent:0,duration: 2,stagger: 0.03, delay:.3, ease: "power4.inOut"})
-    gsap.fromTo('#js_subtitle',{yPercent: 90, opacity:0}, {yPercent:0, opacity:1,delay:1.8,duration: .5, ease: "power1.out"})
-    gsap.fromTo('.reveal_opacity',{opacity: 0}, {opacity:1,duration: 1, delay:2, stagger:.3, ease: "power4.inOut"})
+    gsap.fromTo('.charTitle',{yPercent: 100}, {yPercent:0,duration: 2,stagger: 0.03, ease: "power4.inOut"})
+    gsap.fromTo('#js_subtitle',{yPercent: 90, opacity:0}, {yPercent:0, opacity:1,delay:1.5,duration: .5, ease: "power1.out"})
+    gsap.fromTo('.reveal_opacity',{opacity: 0}, {opacity:1,duration: 1, delay:1.8, stagger:.3, ease: "power4.inOut"})
 
     //ANIMATION BLOC MUSHER
     gsap.registerPlugin(ScrollTrigger)
-    gsap.to(".Home__C__banner",{
+
+    gsap.fromTo(".Home__C__Title",{
+      y:'100px',
+      opacity:0
+    },
+    {
+      scrollTrigger:{
+          trigger: '.Home__C__Title',
+          start: 'top bottom',
+          duration: 2
+      },
+      opacity:1,
+      y:0
+    })
+    gsap.fromTo(".Home__C__banner",
+    {scale: 0.9},
+    {
       scrollTrigger:{
           trigger: '.Home__C__banner',
           start: 'top bottom',
+          end:'top top',
           scrub: 1,
       },
-      backgroundPositionY: "-600px",
+      scale: 1,
+      backgroundPositionY: "100%",
     })
   }
 
@@ -142,7 +160,7 @@ class Home extends React.Component {
         <div className="spacer"></div> */}
 
         <div className="Home__C">
-          <h2>Nos Mushers</h2>
+          <h2 className="Home__C__Title">Nos Mushers</h2>
           <p className="Home__C__description BasicText">
             Les mushers de HORS TRACE AVENTURE ont tous pour ligne le respect de leurs animaux et leur nature profonde, par conséquent ils ajustent leur comportement et les consignes des activités en conséquence.<br/><br/>
 
@@ -176,8 +194,6 @@ class Home extends React.Component {
 
 
         <div className="Home__D">
-
-          <Marquee >
               <div className="Home__D__container">
                 <div data-name="Mana" className="Home__D__container__item">
                   <img  alt="Chien" src="/media/chiens/a.jpeg"/>
@@ -197,27 +213,7 @@ class Home extends React.Component {
                 <div data-name="Cliff" className="Home__D__container__item">
                   <img  alt="Chien" src="/media/chiens/f.jpeg"/>
                 </div>
-                <div data-name="Mana" className="Home__D__container__item">
-                  <img  alt="Chien" src="/media/chiens/a.jpeg"/>
-                </div>
-                <div data-name="Vroum" className="Home__D__container__item">
-                  <img  alt="Chien" src="/media/chiens/c.jpeg"/>
-                </div>
-                <div data-name="Socrate" className="Home__D__container__item">
-                  <img  alt="Chien" src="/media/chiens/d.jpeg"/>
-                </div>
-                <div data-name="Jaba" className="Home__D__container__item">
-                  <img  alt="Chien" src="/media/chiens/e.jpeg"/>
-                </div>
-                <div data-name="Mekong" className="Home__D__container__item">
-                  <img  alt="Chien" src="/media/chiens/b.jpeg"/>
-                </div>
-                <div data-name="Cliff" className="Home__D__container__item">
-                  <img  alt="Chien" src="/media/chiens/f.jpeg"/>
-                </div>
-                
               </div>
-          </Marquee>
         </div>
 
 

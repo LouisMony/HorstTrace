@@ -42,7 +42,7 @@ export default class Component__Navbar extends React.Component {
             <ul>
               <li>
                 <Link onClick={this.toggleMenu} className='Link' data-content='Home' to='/'>
-                  <p className='test'><span>01</span><span className='Link__name'>Home</span></p>
+                  <p className='test'><span>01</span><span className='Link__name'>Accueil</span></p>
                 </Link>
               </li>
               <li>

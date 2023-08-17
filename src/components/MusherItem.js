@@ -30,13 +30,14 @@ export default class MusherItem extends React.Component {
                 ease: "power3.inOut"
             });
 
-            gsap.fromTo(item.querySelectorAll(".MusherItem__left__p"), { y: 200 }, {
+            gsap.fromTo(item.querySelectorAll(".MusherItem__left__p"), { y: 100 }, {
                 scrollTrigger: {
                     trigger: item,
                 },
                 y: 0,
-                duration: 1.5,
-                ease: "power3.inOut"
+                duration: .6,
+                ease: "power1.in"
+                
             });
         });
     }
