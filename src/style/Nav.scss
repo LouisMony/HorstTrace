@@ -4,11 +4,78 @@
     position: fixed;
     top: $baseUnit;
     right: $baseUnit;
-    height: $baseUnit;
     width: $baseUnit;
-    background-color: rgb(255, 255, 255);
-    border: solid 1px black;
+    height: $baseUnit;
     z-index: 10000;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+
+    span{
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background: white;
+        opacity: 1;
+        left: 0;
+        transform-origin: center;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .5s cubic-bezier(.76,0,.14,1);
+        -moz-transition: .5s cubic-bezier(.76,0,.14,1);
+        -o-transition: .5s cubic-bezier(.76,0,.14,1);
+        transition: .5s cubic-bezier(.76,0,.14,1);
+    }
+    span:nth-child(1) {
+        top: 0px;
+    }
+      
+    span:nth-child(2), span:nth-child(3) {
+        top: 8px;
+    }
+      
+    span:nth-child(4) {
+        top: 16px;
+    }
+}    
+
+.open{
+    span{
+        background: $white;
+    }
+    span:nth-child(1) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+    }
+    span:nth-child(2) {
+        -webkit-transform: rotate(30deg);
+        -moz-transform: rotate(30deg);
+        -o-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+
+    span:nth-child(3) {
+        -webkit-transform: rotate(-30deg);
+        -moz-transform: rotate(-30deg);
+        -o-transform: rotate(-30deg);
+        transform: rotate(-30deg);
+    }
+
+    span:nth-child(4) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+    }
 }
 
 .Nav{

@@ -17,7 +17,6 @@ export default class Component__Navbar extends React.Component {
     }
 
     initAnimation() {
-      console.log('start');
       gsap.fromTo('.test',{yPercent: 100, rotateY: -45}, {yPercent:0, rotateY:0,duration: 0.6, delay:0.3, stagger: 0.1, ease: "power3.inOut"})
     }
 
@@ -32,8 +31,13 @@ export default class Component__Navbar extends React.Component {
       const { isMenuActive } = this.state;
 
       return (
-        <>
-          <div className='NavToggle' onClick={this.toggleMenu}></div>
+        <div>
+          <div className={`NavToggle ${isMenuActive ? 'open' : ''}`} onClick={this.toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <div className={`Nav ${isMenuActive ? 'active' : ''}`} ref={this.navMenuRef}>
             <ul>
               <li>
@@ -58,7 +62,7 @@ export default class Component__Navbar extends React.Component {
               </li>
             </ul>
           </div>
-        </>
+        </div>
       );
     }
   }
