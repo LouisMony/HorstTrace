@@ -49,6 +49,8 @@ $colorp: #333333;
 
 body{
   width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 p,h1,h2,h3,h3{
