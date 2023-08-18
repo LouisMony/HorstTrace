@@ -20,11 +20,18 @@ export default class Component__Navbar extends React.Component {
       gsap.fromTo('.test',{yPercent: 100, rotateY: -45}, {yPercent:0, rotateY:0,duration: 0.6, delay:0.3, stagger: 0.1, ease: "power3.inOut"})
     }
 
+    closeAnimation(){
+      gsap.fromTo('.test',{yPercent: 0, rotateY: 0}, {yPercent:100, rotateY:0,duration: 0.6, stagger: 0.1, ease: "power3.inOut"})
+    }
+
     toggleMenu = () => {
       this.setState((prevState) => ({
         isMenuActive: !prevState.isMenuActive,
       }));
       if(this.state.isMenuActive === false){this.initAnimation()}
+      else{
+        this.closeAnimation()
+      }
     };
 
     render() {

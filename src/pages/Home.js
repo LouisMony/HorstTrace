@@ -62,6 +62,38 @@ class Home extends React.Component {
       scale: 1,
       backgroundPositionY: "100%",
     })
+
+    //ANIMATION BLOC CHIEN
+
+    const galleryContainer = document.querySelector(".Home__D__gallery");
+    const galleryItems = galleryContainer.querySelectorAll(".Home__D__gallery__item"); 
+
+    const defaultItemFlex = "0 1 50px"; 
+    const hoverItemFlex = "1 1 200px";
+    
+    const updateGalleryItems = () => {
+      galleryItems.forEach((item) => {
+        let flex = defaultItemFlex;
+        if (item.isHovered) { 
+          flex = hoverItemFlex;
+        }
+        item.style.flex = flex;
+      })
+    }
+
+    galleryItems [0].isHovered = true; 
+    updateGalleryItems();
+    
+    galleryItems.forEach((item) => {
+
+      item.addEventListener("mouseenter", () => {
+        galleryItems.forEach((otherItem) => {
+            otherItem.isHovered = otherItem === item;
+    
+        });
+        updateGalleryItems()
+      });
+    });
   }
 
   HandleBlocMovement(){
@@ -134,31 +166,7 @@ class Home extends React.Component {
         </div>
         
         <div className="spacer"></div>
-        {/* <div className="Home__B">
-          <div className="Home__B__left">
-            <h2 className="EikoFont">La meute</h2>
-            <p>
-            A ce jour, la meute est composée de plus de 100 chiens, Groenlandais, croisés Groenlandais ou Alaskans pour la plupart.<br/><br/>
-
-            Tous naissent au chenil ou sont intégrés entre 2 et 3 mois et y finissent leur vie après une retraite paisible et méritée. Les chiens actifs, entre 2 et 10 ans ne sont finalement qu'au nombre de 75.<br/>
-            Les naissances doivent donc être régulières, chaque année, pour ne pas déséquilibrer le bon fonctionnement de la meute et le travail hivernal.<br/><br/>
-
-            Le Groënlandais ou chien du Groënland est le chien de traîneau par excellence, compromis parfait entre la vitesse du husky et la puissance du malamute.<br/>
-            Bâti pour l'endurance, d'un poids compris entre 30 et 40 kg, il est l'un des chiens les plus primitifs, se targuant de 10 000 ans passés au contact de l'homme.<br/><br/>
-
-            Il est aussi essentiel de sélectionner les géniteurs, comme tout éleveur sérieux le fait, afin d'obtenir le meilleur compromis entre les caractéristiques physiques, les aptitudes au travail et la sociabilité en meute et envers les humains.<br/><br/>
-
-            Voilà, bien sûr, l'essence même de notre métier, outre l'élaboration de prestations de qualité, ce sont avant tout des soins quotidiens, une vision à long terme de l'évolution de la meute, un rapport étroit avec ses chiens ou l'un dépend de l'autre, et vice versa.
-
-            </p>
-          </div>
-          <div className="Home__B__right">
-            <img alt="Chien groenlandais" src="/media/meute/Meute_1.png"/>
-          </div>
-        </div>
-
-        <div className="spacer"></div> */}
-
+        
         <div className="Home__C">
           <h2 className="Home__C__Title">Nos Mushers</h2>
           <p className="Home__C__description BasicText">
@@ -191,31 +199,58 @@ class Home extends React.Component {
           </div>
         </div>
 
-
+        <div className="spacer"></div>
 
         <div className="Home__D">
-              <div className="Home__D__container">
-                <div data-name="Mana" className="Home__D__container__item">
+          {/* <h2 className="Home__D__Title">La Meute</h2> */}
+          
+            <div className="Home__D__gallery">
+                <div data-name="Mana" className="Home__D__gallery__item">
                   <img  alt="Chien" src="/media/chiens/a.jpeg"/>
                 </div>
-                <div data-name="Vroum" className="Home__D__container__item">
+                <div data-name="Vroum" className="Home__D__gallery__item">
                   <img  alt="Chien" src="/media/chiens/c.jpeg"/>
                 </div>
-                <div data-name="Socrate" className="Home__D__container__item">
+                <div data-name="Socrate" className="Home__D__gallery__item">
                   <img  alt="Chien" src="/media/chiens/d.jpeg"/>
                 </div>
-                <div data-name="Jaba" className="Home__D__container__item">
+                <div data-name="Jaba" className="Home__D__gallery__item">
                   <img  alt="Chien" src="/media/chiens/e.jpeg"/>
                 </div>
-                <div data-name="Mekong" className="Home__D__container__item">
+                <div data-name="Mekong" className="Home__D__gallery__item">
                   <img  alt="Chien" src="/media/chiens/b.jpeg"/>
                 </div>
-                <div data-name="Cliff" className="Home__D__container__item">
+                <div data-name="Cliff" className="Home__D__gallery__item">
                   <img  alt="Chien" src="/media/chiens/f.jpeg"/>
                 </div>
-              </div>
+                <div data-name="Mana" className="Home__D__gallery__item">
+                  <img  alt="Chien" src="/media/chiens/a.jpeg"/>
+                </div>
+                <div data-name="Vroum" className="Home__D__gallery__item">
+                  <img  alt="Chien" src="/media/chiens/c.jpeg"/>
+                </div>
+                <div data-name="Socrate" className="Home__D__gallery__item">
+                  <img  alt="Chien" src="/media/chiens/d.jpeg"/>
+                </div>
+                <div data-name="Jaba" className="Home__D__gallery__item">
+                  <img  alt="Chien" src="/media/chiens/e.jpeg"/>
+                </div>
+                <div data-name="Mekong" className="Home__D__gallery__item">
+                  <img  alt="Chien" src="/media/chiens/b.jpeg"/>
+                </div>
+                <div data-name="Cliff" className="Home__D__gallery__item">
+                  <img  alt="Chien" src="/media/chiens/f.jpeg"/>
+                </div>
+            </div>
+            <p className="Home__D__description BasicText">
+              A ce jour, la meute est composée de +100 chiens, Groenlandais, croisés Groenlandais ou Alaskans pour la plupart.<br/>
+              Tous naissent au chenil ou sont intégrés entre 2 et 3 mois et y finissent leur vie après une retraite paisible et méritée.
+              Les chiens actifs, entre 2 et 10 ans ne sont finalement qu'au nombre de 75.
+              Les naissances doivent donc être régulières, chaque année, pour ne pas déséquilibrer le bon fonctionnement de la meute et le travail hivernal.
+            </p>
         </div>
 
+        <div className="spacer"></div>
 
         <Component__Footer/>
       </div>
