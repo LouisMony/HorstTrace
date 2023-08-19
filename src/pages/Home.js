@@ -2,9 +2,9 @@ import React from "react";
 import '../style/Home.scss';
 import transition from "../transition";
 import Component__Footer from "../components/Component__Footer";
-import MusherItem from "../components/MusherItem";
+import Component__Cta from "../components/Component__Cta";
 
-import Marquee from "react-fast-marquee";
+//import Marquee from "react-fast-marquee";
 
 //ANIMATION
 import { gsap } from "gsap";
@@ -15,7 +15,6 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ProfilIsHovered:false,
       currentImgSrc: "1.png",
     }
     
@@ -23,7 +22,6 @@ class Home extends React.Component {
   
   componentDidMount(){
       this.InitAnimation()
-      this.HandleBlocMovement()
   }
 
   InitAnimation(){
@@ -37,21 +35,24 @@ class Home extends React.Component {
     //ANIMATION BLOC MUSHER
     gsap.registerPlugin(ScrollTrigger)
 
-    gsap.fromTo(".Home__C__Title",{
-      y:'100px',
-      opacity:0
-    },
-    {
-      scrollTrigger:{
-          trigger: '.Home__C__Title',
-          start: 'top bottom',
-          duration: 2
-      },
-      opacity:1,
-      y:0
+    document.querySelectorAll(".JsBasicH2").forEach(item=>{
+      gsap.fromTo(item,{y:'100px',opacity:0},{scrollTrigger:{trigger: item, start: 'top bottom', duration: 2},opacity:1,y:0})
     })
-    gsap.fromTo(".Home__C__banner",
-    {scale: 0.9},
+    document.querySelectorAll(".JsBasicP").forEach(item=>{
+      gsap.fromTo(item,{y:100, opacity:0},{scrollTrigger:{trigger: item, start: 'top bottom', duration: 2},opacity:1, y:0})
+    })
+
+    document.querySelectorAll(".JsProFil").forEach(item=>{
+      gsap.fromTo(item,{scale:.5,opacity:0},{scrollTrigger:{trigger: item, start: 'top bottom', duration: 3},opacity:1,scale: 1})
+    })
+
+    let nextdelay = .2
+    document.querySelectorAll(".Home__D__gallery__item").forEach(item=>{
+      nextdelay = nextdelay + 0.03
+      gsap.fromTo(item,{scale:.2,opacity:0},{scrollTrigger:{trigger: item, start: 'top bottom', duration: 3},delay: nextdelay,opacity:1,scale: 1})
+    })
+    
+    gsap.fromTo(".Home__C__banner",{scale: 0.9},
     {
       scrollTrigger:{
           trigger: '.Home__C__banner',
@@ -96,43 +97,7 @@ class Home extends React.Component {
     });
   }
 
-  HandleBlocMovement(){
-      gsap.set(".Home__C__profil", {xPercent: 100, yPercent: -100});
-      const bloc = document.querySelector('.Home__C__profil');
   
-      let xTo = gsap.quickTo(".Home__C__profil", "x", {duration: 0.4, ease: "power3"}), yTo = gsap.quickTo(".Home__C__profil", "y", {duration: 0.4, ease: "power3"});
-  
-      window.addEventListener("mousemove", e => {
-        xTo(e.pageX);
-        yTo(e.pageY);
-
-        if(!this.state.ProfilIsHovered){
-          bloc.style.opacity = "0";
-        }
-        else{
-          bloc.style.opacity = "1";
-        }
-      });
-  }
-
-  handleMouseEnter = (param, e) => {
-    const bloc = document.querySelector('.Home__C__profil');
-    const NewImage = document.createElement("img");
-    NewImage.src = '/media/meute/' + param;
-    NewImage.classList.add('inactive');
-    bloc.appendChild(NewImage);
-    setTimeout(function() { NewImage.classList.remove('inactive'); }, 10);
-    NewImage.addEventListener('transitionend', () => {
-      const FirstImage = bloc.querySelector("img");
-      if(FirstImage){bloc.removeChild(FirstImage);}
-    }, { once: true });
-  };
-
-  DisplayBlock = (bool) =>{
-    this.setState({
-      ProfilIsHovered: bool,
-    });
-  }
 
   render() {
     return (
@@ -143,7 +108,6 @@ class Home extends React.Component {
             <source src="/media/video/home_video.mp4"  type="video/mp4" />
           </video>
         </div>
-        
         
         <div className="Home__A">
           <div className="Home__A__Title">
@@ -168,42 +132,87 @@ class Home extends React.Component {
         <div className="spacer"></div>
         
         <div className="Home__C">
-          <h2 className="Home__C__Title">Nos Mushers</h2>
-          <p className="Home__C__description BasicText">
+          <h2 className="Home__C__Title BasicH2 JsBasicH2">Nos Mushers</h2>
+          <p className="Home__C__description BasicText JsBasicP">
             Les mushers de HORS TRACE AVENTURE ont tous pour ligne le respect de leurs animaux et leur nature profonde, par conséquent ils ajustent leur comportement et les consignes des activités en conséquence.<br/><br/>
 
             Ils veillent à la propreté des zones d'activités par souci sanitaire pour la meute mais aussi pour les clients et les autres usagers. Il arrive qu'ils s'arrêtent fréquemment sur les parcours pour ramasser les déjections.<br/><br/>
 
-            Ils sont à l'écoute du travail de leurs chiens dont ils respectent les limites physiologiques et psychologiques ce qui induit qu'avec les animaux, les raisonnements mercantiles trouvent parfois une limite.<br/><br/>
+            Ils sont à l'écoute du travail de leurs chiens dont ils respectent les limites physiologiques et psychologiques ce qui induit qu'avec les animaux, les raisonnements mercantiles trouvent parfois une limite.
           </p>
+
+          
+
+          <div className="Home__C__profil">
+              <div className="Home__C__profil__row">
+                <div className="Home__C__profil__row__item JsProFil">
+                  <div className="Home__C__profil__row__item__content">
+                    <p className="Home__C__profil__row__item__content__name">Mathias</p>
+                    <p className="Home__C__profil__row__item__content__desc">En 1995, création de la société Hors Trace Aventure.<br></br>
+                      Décidé à devenir professionnel, c'est l'installation à Montalbert en Tarentaise, petite station familiale excentrée de la grande Plagne.<br></br>
+
+                      En 20 ans, la meute hétéroclite de chiens récupérés s'est affinée et a mûrie, les produits touristiques se sont étoffés.<br></br>
+
+                      Sans oublier bien sûr, l'arrivée de Stéphane Alcouffe, précieux Handler, présent tous les hivers depuis 2004. </p>
+                  </div>
+                  <img  alt="Musher" src="/media/mushers/1.png"/>
+                </div>
+                <div className="Home__C__profil__row__item JsProFil">
+                <div className="Home__C__profil__row__item__content">
+                    <p className="Home__C__profil__row__item__content__name">Stephane</p>
+                    <p className="Home__C__profil__row__item__content__desc">En 1995, création de la société Hors Trace Aventure.<br></br>
+                      Décidé à devenir professionnel, c'est l'installation à Montalbert en Tarentaise, petite station familiale excentrée de la grande Plagne.<br></br>
+
+                      En 20 ans, la meute hétéroclite de chiens récupérés s'est affinée et a mûrie, les produits touristiques se sont étoffés.<br></br>
+
+                      Sans oublier bien sûr, l'arrivée de Stéphane Alcouffe, précieux Handler, présent tous les hivers depuis 2004. </p>
+                  </div>
+                  <img  alt="Musher" src="/media/mushers/2.png"/>
+                </div>
+              </div>
+              <div className="Home__C__profil__row">
+                
+                <div className="Home__C__profil__row__item JsProFil">
+                <div className="Home__C__profil__row__item__content">
+                    <p className="Home__C__profil__row__item__content__name">Axel</p>
+                    <p className="Home__C__profil__row__item__content__desc">En 1995, création de la société Hors Trace Aventure.<br></br>
+                      Décidé à devenir professionnel, c'est l'installation à Montalbert en Tarentaise, petite station familiale excentrée de la grande Plagne.<br></br>
+
+                      En 20 ans, la meute hétéroclite de chiens récupérés s'est affinée et a mûrie, les produits touristiques se sont étoffés.<br></br>
+
+                      Sans oublier bien sûr, l'arrivée de Stéphane Alcouffe, précieux Handler, présent tous les hivers depuis 2004. </p>
+                  </div>
+                  <img  alt="Chien" src="/media/mushers/3.png"/>
+                </div>
+                <div className="Home__C__profil__row__item JsProFil">
+                <div className="Home__C__profil__row__item__content">
+                    <p className="Home__C__profil__row__item__content__name">Tobias</p>
+                    <p className="Home__C__profil__row__item__content__desc">En 1995, création de la société Hors Trace Aventure.<br></br>
+                      Décidé à devenir professionnel, c'est l'installation à Montalbert en Tarentaise, petite station familiale excentrée de la grande Plagne.<br></br>
+
+                      En 20 ans, la meute hétéroclite de chiens récupérés s'est affinée et a mûrie, les produits touristiques se sont étoffés.<br></br>
+
+                      Sans oublier bien sûr, l'arrivée de Stéphane Alcouffe, précieux Handler, présent tous les hivers depuis 2004. </p>
+                  </div>
+                  <img  alt="Chien" src="/media/mushers/4.png"/>
+                </div>
+              </div>
+          </div>
 
           <div className="Home__C__banner"></div>
 
-          <div onMouseEnter={() => this.DisplayBlock(true)} onMouseLeave={() => this.DisplayBlock(false)}>
-            <div onMouseEnter={() => this.handleMouseEnter("1.png")}>
-              <MusherItem title="Mathias Bernal" />
-            </div>
-            <div onMouseEnter={() => this.handleMouseEnter("2.png")}>
-              <MusherItem title="Stéphane Alcouffe" />
-            </div>
-            <div onMouseEnter={() => this.handleMouseEnter("3.png")}>
-              <MusherItem title="Axel Boulais" />
-            </div>
-            <div onMouseEnter={() => this.handleMouseEnter("4.png")}>
-              <MusherItem title="Tobias Olla" />
-            </div>
-          </div>
-        
-          <div className="Home__C__profil">
-            <img  alt="Profil du Musher" src={`/media/meute/${this.state.currentImgSrc}`}/>
-          </div>
         </div>
 
         <div className="spacer"></div>
 
         <div className="Home__D">
-          {/* <h2 className="Home__D__Title">La Meute</h2> */}
-          
+          <h2 className="Home__D__Title BasicH2 JsBasicH2">La Meute</h2>
+          <p className="Home__D__description BasicText JsBasicP">
+              A ce jour, la meute est composée de +100 chiens, Groenlandais, croisés Groenlandais ou Alaskans pour la plupart.<br/><br/>
+              Tous naissent au chenil ou sont intégrés entre 2 et 3 mois et y finissent leur vie après une retraite paisible et méritée.
+              Les chiens actifs, entre 2 et 10 ans ne sont finalement qu'au nombre de 75.<br/><br/>
+              Les naissances doivent donc être régulières, chaque année, pour ne pas déséquilibrer le bon fonctionnement de la meute et le travail hivernal.<br/><br/>
+          </p>
             <div className="Home__D__gallery">
                 <div data-name="Mana" className="Home__D__gallery__item">
                   <img  alt="Chien" src="/media/chiens/a.jpeg"/>
@@ -241,14 +250,15 @@ class Home extends React.Component {
                 <div data-name="Cliff" className="Home__D__gallery__item">
                   <img  alt="Chien" src="/media/chiens/f.jpeg"/>
                 </div>
-            </div>
-            <p className="Home__D__description BasicText">
-              A ce jour, la meute est composée de +100 chiens, Groenlandais, croisés Groenlandais ou Alaskans pour la plupart.<br/>
-              Tous naissent au chenil ou sont intégrés entre 2 et 3 mois et y finissent leur vie après une retraite paisible et méritée.
-              Les chiens actifs, entre 2 et 10 ans ne sont finalement qu'au nombre de 75.
-              Les naissances doivent donc être régulières, chaque année, pour ne pas déséquilibrer le bon fonctionnement de la meute et le travail hivernal.
-            </p>
+            </div> 
+            <p className="Home__D__description BasicText JsBasicP">
+            Il est aussi essentiel de sélectionner les géniteurs, comme tout éleveur sérieux le fait, afin d'obtenir le meilleur compromis entre les caractéristiques physiques, les aptitudes au travail et la sociabilité en meute et envers les humains.<br/><br/>
+
+            Voilà, bien sûr, l'essence même de notre métier, outre l'élaboration de prestations de qualité, ce sont avant tout des soins quotidiens, une vision à long terme de l'évolution de la meute, un rapport étroit avec ses chiens ou l'un dépend de l'autre, et vice versa.<br/><br/>
+          </p>        
         </div>
+
+        <Component__Cta text="Réserver une activité" />
 
         <div className="spacer"></div>
 

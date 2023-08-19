@@ -37,9 +37,9 @@
         
         p{
             margin-top: calc(3*$baseUnit);
-            line-height: 1.3;
+            line-height: 1;
             color: rgba(255, 255, 255, 0.5);
-            font-size: 1.7vw;
+            
         }
 
         img{
@@ -71,25 +71,13 @@
     .Home__C{
         background-color: $white;
         padding: 0 $baseUnit;
-        h2{
-            white-space: nowrap;
-            font-size: 13vw;
-            font-family: "PowerM";  
-            margin-bottom: calc(2*$baseUnit);
-            text-align: right;
-        }
 
-        &__description{
-            margin-bottom: $baseUnit;
-            width: 66%;
-            text-align: justify;
-            line-height: 37px;
-        }
 
         &__banner{
             height: 50vh;
             width: 100%;
-            margin-bottom: calc(2*$baseUnit);
+            border-radius: 24px;
+            margin: calc(3*$baseUnit) 0;
             background-position-y:80%;
             background-repeat: no-repeat;
             background-size: cover;
@@ -97,31 +85,103 @@
         }
 
         &__profil{
-            position: absolute;
-            z-index: 10000;
-            width: 30vh;
-            min-width: 200px;
-            aspect-ratio: 1/1;
-            top: 0;
-            left: 0;
-            background-color: black;
-            transition: all 300ms linear;
+            margin-top: calc(3*$baseUnit);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: $baseUnit;
             
-            img{
-                position: absolute;
-                top: 0;
-                left: 0;
+            &__row{
+                height: 55vh;
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
-                clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-                transition: clip-path 500ms cubic-bezier(.86,0,.15,1) /* Ajoutez clip-path à la transition */
-            }
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: $baseUnit;
 
-            .inactive{
-                clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
-                transition: clip-path 500ms cubic-bezier(.86,0,.15,1)
+                &__item{
+                    width: 100%;
+                    height: 55vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 24px;
+                    overflow: hidden;
+                    position: relative;
+
+                    &__content{
+                        padding: $baseUnit;
+                        height: 100%;
+                        background: linear-gradient(360deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0) 100%);
+                        z-index: 300;
+                        color: $white;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: end;
+                        gap: 16px;
+
+                        &__name{
+                            font-size: $baseUnit;
+                            font-family: "PowerM";
+                            position: relative;
+
+                            &::before{
+                                content: ''; 
+                                background-color: $white;
+                                position: absolute;
+                                width: 0%;
+                                height: 1px;
+                                bottom: -5px;
+                                left: 0;
+                                z-index: 1000;
+                                transition: all 800ms cubic-bezier(.85,0,.11,.99);
+                                opacity: .25;
+                            }
+                        }
+
+                        &__desc{
+                            overflow: hidden;
+                            max-height: 0px;
+                            font-size: calc($baseUnit/2.5);
+                            opacity: .75;
+                            transition: all 800ms ease-in-out;
+                        }
+
+                        &:hover{
+                            .Home__C__profil__row__item__content__name{
+                                &::before{
+                                    width: 100%;
+                                }
+                            }
+                            .Home__C__profil__row__item__content__desc{
+                                max-height: 300px;
+                            }
+                        }
+                    }
+                    img{
+                        //display: none;
+                        z-index: 100;
+                        position: absolute;
+                        transform: translate(-50%, -50%) scale(1);
+                        top: 50%;
+                        left: 50%;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: all 800ms cubic-bezier(.57,0,.4,1);
+
+                    }
+
+                    &:hover{
+                        img{
+                            //display: none;
+                            transform: translate(-50%, -50%) scale(1.2);
+                        } 
+                    }
+                }
             }
+            
         }
     }
 
@@ -131,18 +191,6 @@
         padding: $baseUnit;
         overflow: hidden;
 
-        h2{
-            white-space: nowrap;
-            font-size: 13vw;
-            font-family: "PowerM";  
-            margin-bottom: calc(4*$baseUnit);
-        }
-
-        &__description{
-            text-align: justify;
-            margin-top: calc(4*$baseUnit);
-            line-height: 37px;
-        }
 
         &__gallery{
             height: 75vh;
@@ -152,15 +200,19 @@
             gap: calc($baseUnit/4);
             width: fit-content;
             width: 100%;
+            margin: calc(3*$baseUnit) 0;
             
             &__item{
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 height: 75vh;
+                
                 flex: 0 1 50px;
                 background-color: rgb(0, 0, 0);
+                border-radius: 16px;
                 position: relative;
+                overflow: hidden;
                 transition: all 500ms cubic-bezier(.86,0,.15,1);
 
                 img{
@@ -175,7 +227,8 @@
                     position: absolute;
                     bottom: 0;
                     left: $baseUnit;
-                    font-size: 24px;
+                    font-size: 16px;
+                    font-weight: 600;
                     opacity: 0;
                     color: $white;
                     text-transform: capitalize;

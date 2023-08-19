@@ -96,11 +96,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: calc(2 * $baseUnit);
+        gap: calc(1.5 * $baseUnit);
         height: 100%;
 
         li{
-            height: 90px;
+            height: 120px;
             position: relative;
             overflow: hidden;
     
@@ -108,7 +108,6 @@
                 position: relative;
                 color: $white;
                 z-index: 900;
-                font-family: "NohemiB";
 
                 span{
                     opacity: .2;
@@ -128,7 +127,7 @@
                         position: absolute;
                         width: 0%;
                         height: 2px;
-                        top: 85px;
+                        top: 113px;
                         left: 0;
                         z-index: 1000;
                         transition: all 500ms cubic-bezier(.72,0,.23,1);
