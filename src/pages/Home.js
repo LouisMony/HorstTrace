@@ -27,10 +27,14 @@ class Home extends React.Component {
   InitAnimation(){
     
     //ANIMATION BLOC A
+
+    let startdelay = 2.5
+    if(sessionStorage.getItem('load') === 'true'){startdelay = 0}
+
     const MyTitle = new SplitType('#js_title', { charClass: 'charTitle' })
-    gsap.fromTo('.charTitle',{yPercent: 100}, {yPercent:0,duration: 2,stagger: 0.03, ease: "power4.inOut"})
-    gsap.fromTo('#js_subtitle',{yPercent: 90, opacity:0}, {yPercent:0, opacity:1,delay:1.5,duration: .5, ease: "power1.out"})
-    gsap.fromTo('.reveal_opacity',{opacity: 0}, {opacity:1,duration: 1, delay:1.8, stagger:.3, ease: "power4.inOut"})
+    gsap.fromTo('.charTitle',{yPercent: 100}, {yPercent:0,duration: 2,stagger: 0.03, delay:(0+startdelay), ease: "power4.inOut"})
+    gsap.fromTo('#js_subtitle',{yPercent: 90, opacity:0}, {yPercent:0, opacity:1,delay:(1.5+startdelay),duration: .5, ease: "power1.out"})
+    gsap.fromTo('.reveal_opacity',{opacity: 0}, {opacity:1,duration: 1, delay:(1+startdelay), stagger:.3, ease: "power4.inOut"})
 
     //ANIMATION BLOC MUSHER
     gsap.registerPlugin(ScrollTrigger)
@@ -46,7 +50,7 @@ class Home extends React.Component {
       gsap.fromTo(item,{scale:.5,opacity:0},{scrollTrigger:{trigger: item, start: 'top bottom', duration: 3},opacity:1,scale: 1})
     })
 
-    let nextdelay = .2
+    let nextdelay = .3
     document.querySelectorAll(".Home__D__gallery__item").forEach(item=>{
       nextdelay = nextdelay + 0.03
       gsap.fromTo(item,{scale:.2,opacity:0},{scrollTrigger:{trigger: item, start: 'top bottom', duration: 3},delay: nextdelay,opacity:1,scale: 1})

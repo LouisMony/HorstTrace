@@ -6,6 +6,7 @@ import { AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Component__Navbar from './components/Component__Navbar';
+import Component__Loader from './components/Component__Loader';
 
 //STYLE 
 import './index.scss';
@@ -16,6 +17,7 @@ function App(){
 
   return (
     <>
+      <Component__Loader />
       <Component__Navbar/>
       <AnimatePresence mode='wait'>
         <Routes location={location} key={location.pathname}>
