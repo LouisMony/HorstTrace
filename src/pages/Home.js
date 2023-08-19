@@ -50,7 +50,7 @@ class Home extends React.Component {
       gsap.fromTo(item,{scale:.5,opacity:0},{scrollTrigger:{trigger: item, start: 'top bottom', duration: 3},opacity:1,scale: 1})
     })
 
-    let nextdelay = .3
+    let nextdelay = 0
     document.querySelectorAll(".Home__D__gallery__item").forEach(item=>{
       nextdelay = nextdelay + 0.03
       gsap.fromTo(item,{scale:.2,opacity:0},{scrollTrigger:{trigger: item, start: 'top bottom', duration: 3},delay: nextdelay,opacity:1,scale: 1})
@@ -262,7 +262,7 @@ class Home extends React.Component {
           </p>        
         </div>
 
-        <Component__Cta text="Réserver une activité" />
+        <Component__Cta text="Réserver une activité" link='/contact' />
 
         <div className="spacer"></div>
 

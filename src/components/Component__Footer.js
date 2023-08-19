@@ -19,7 +19,7 @@ export default class Component__Footer extends React.Component {
                 <Link className='Link' to="/">Plan du site</Link>
             </div>
             <div className='Footer__bottom'>
-                ©Hors Trace Aventure 2014
+                ©Hors Trace Aventure 2024
             </div>
         </div>
       ) ;

@@ -11,7 +11,7 @@ export default class Component__Cta extends React.Component {
     render() {
       return(
         <div className='Cta'>
-            <Link className='Link' to="/"><span>{this.props.text}</span></Link>
+            <Link className='Link' to={this.props.link}><span>{this.props.text}</span></Link>
         </div>
       ) ;
     }
